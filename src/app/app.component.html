@@ -1,0 +1,38 @@
+<main class="main">
+  <div class="content">
+    <div class="tabs">
+      @for (tab of tabs; track $index) {
+      <button
+        (click)="selectedTab = tab.id"
+        [class.active]="selectedTab === tab.id"
+      >
+        {{ tab.name }}
+      </button>
+      }
+    </div>
+    {{tabs[selectedTab].desc}}
+    <div class="tab-content">
+      @switch (selectedTab) {
+        @case (0) {
+          <array-operations-1></array-operations-1>
+        }
+        @case (1) {
+          <array-operations-2></array-operations-2>
+        }
+        @case (2) {
+          <array-operations-3></array-operations-3>
+        }
+        @case (3) {
+          <array-operations-4></array-operations-4>
+        }
+        @case (4) {
+          <array-operations-5></array-operations-5>
+        }
+        @case (5) {
+          <array-operations-6></array-operations-6>
+        }
+      }
+    </div>
+  </div>
+</main>
+<router-outlet />
