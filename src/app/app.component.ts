@@ -6,6 +6,7 @@ import { ArrayOperations3Component } from './lodash/array-operations-3';
 import { ArrayOperations4Component } from './lodash/array-operations-4';
 import { ArrayOperations5Component } from './lodash/array-operations-5';
 import { ArrayOperations6Component } from './lodash/array-operations-6';
+import { ArrayOperations7Component } from './lodash/array-operations-7';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -15,7 +16,8 @@ import { RouterOutlet } from '@angular/router';
     RouterOutlet, 
     ArrayOperations1Component, ArrayOperations2Component,
     ArrayOperations3Component, ArrayOperations4Component, 
-    ArrayOperations5Component, ArrayOperations6Component],
+    ArrayOperations5Component, ArrayOperations6Component,
+    ArrayOperations7Component],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
@@ -32,5 +34,6 @@ export class AppComponent {
     { id: 3, name: '改變結構', desc: '「改變陣列形狀、合併或拆解結構」' },
     { id: 4, name: '元素修改', desc: '「直接動手修改陣列裡的值或內容」' },
     { id: 5, name: '頭尾操作', desc: '操作頭尾，通常用來取單一值' },
+    { id: 6, name: '其他', desc: '' }
   ];
 }

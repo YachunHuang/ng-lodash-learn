@@ -21,7 +21,7 @@ export class ArrayOperations3Component {
       demo: ''
     },
     {
-      title: '_.findIndex(array, [predicate=_.identity], [fromIndex=0])',
+      title: '_.findLastIndex(array, [predicate=_.identity], [fromIndex=array.length-1])',
       desc: '跟 _.findIndex 類似，但是從尾巴往前找，找出最後一個符合條件的 index。',
       code: '_.findLastIndex([1, 2, 3, 4], n => n > 2)',
       result: _.findLastIndex([1, 2, 3, 4], (n) => n > 2),

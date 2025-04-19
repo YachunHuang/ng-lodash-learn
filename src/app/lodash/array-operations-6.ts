@@ -17,11 +17,11 @@ export class ArrayOperations6Component {
       desc: '回傳陣列的第一個元素。',
       code: '_.head([1, 2, 3])',
       result: _.head([1, 2, 3]),
-      tip: '就是「頭」，看看陣列開頭是誰。',
+      tip: '看看陣列開頭是誰。',
       demo: ''
     },
     {
-      title: '_.first(array) 別名，為了讓使用者能更直觀使用',
+      title: '_.first(array) 別名，為了讓使用者能更直覺使用',
       desc: '拿出陣列的「第一個元素」。',
       code: '_.first([1, 2, 3])',
       result: _.first([1, 2, 3]),
@@ -33,7 +33,7 @@ export class ArrayOperations6Component {
       desc: '拿出陣列的「最後一個元素」。',
       code: '_.last([1, 2, 3])',
       result: _.last([1, 2, 3]),
-      tip: '如果你常常 .length - 1，可以改用這個。',
+      tip: '更語意化，如果常常用 .length - 1 的話，可以改用這個。',
       demo: ''
     },
   ];

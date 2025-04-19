@@ -17,7 +17,7 @@ export class ArrayOperations2Component {
       desc: '把陣列裡面的「假值」（像是 false, null, 0, "", undefined, NaN)都清掉。',
       code: '_.compact([0, 1, false, 2, "", 3])',
       result: _.compact([0, 1, false, 2, "", 3]),
-      tip: '就是「把沒意義的東西過濾掉，只留有值的」。',
+      tip: '「把沒意義的東西過濾掉，只留有值的」。',
       demo: ''
     },
     {
@@ -33,7 +33,7 @@ export class ArrayOperations2Component {
       desc: '比對兩個陣列，把第一個陣列中「獨有」的元素留下來。',
       code: '_.differenceBy([2.1, 1.2], [2.3, 3.4], Math.floor)',
       result: _.differenceBy([2.1, 1.2], [2.3, 3.4], Math.floor),
-      tip: '你可以加一個「轉換條件」（也叫 iteratee），先把元素「轉換過再比較」。',
+      tip: '可以加一個「轉換條件」（也叫 iteratee），先把元素「轉換過再比較」。',
       demo: `
 第一個陣列是 [2.1, 1.2] </br>
 第二個陣列是 [2.3, 3.4] </br>
@@ -48,18 +48,11 @@ Math.floor 是條件，也就是「先取整數」後再比對 </br>
     },
     {
       title: '_.differenceWith(array, [values], [comparator])',
-      desc: '比對兩個陣列，把第一個陣列中「獨有」的元素留下來，但比對方式不是用 ===，而是可以傳一個「自訂的比較方法」來判斷「一不一樣」。',
-      code: '_.differenceWith([{ x: 1 }], [{ x: 1 }], _.isEqual)',
-      result: _.differenceWith([{ x: 1 }], [{ x: 1 }], _.isEqual),
-      tip: '雖然這兩個物件是不同記憶體，但 _.isEqual 判斷它們內容一樣 → 所以當作「一樣的東西」處理 → 結果是空陣列 []。',
-      demo: `
-為什麼需要這個？ </br>
-當你的陣列裡裝的是「物件」，像是： [{ x: 1 }] </br></br>
-即使兩個物件內容一模一樣，它們也會被當成「不同的東西」，因為 JavaScript 預設是用記憶體位址（reference）來比的。 </br></br>
-{ x: 1 } !== { x: 1 } // 雖然看起來一樣，但不會等於 </br></br>
-這時就需要 _.isEqual 這種深層比較函數，搭配 _.differenceWith 來處理！ </br>
-`
-      
+      desc: '從第一個陣列中找出「不在第二個陣列中」的項目。可以提供一個自訂的比較函式（像是 _.isEqual），來決定兩個值是否一樣。',
+      code: '_.differenceWith([{ x: 1 }, { x: 2 }],[{ x: 1 }],_.isEqual)',
+      result: _.differenceWith([{ x: 1 }, { x: 2 }],[{ x: 1 }],_.isEqual),
+      tip: '這兩個物件是不同記憶體，但 _.isEqual 判斷它們內容一樣 → 所以當作「一樣的東西」處理 → 結果是空陣列 []。',
+      demo: ''
     },
     {
       title: '_.intersection([arrays])',
@@ -71,10 +64,10 @@ Math.floor 是條件，也就是「先取整數」後再比對 </br>
     },
     {
       title: '_.intersectionBy([arrays], [iteratee=_.identity])',
-      desc: '交集的版本，但會先套用某個函式（像是取整數）來比。',
+      desc: '交集，會先套用某個函式（像是取整數）來比。',
       code: '_.intersectionBy([2.1, 1.2], [2.3, 3.4], Math.floor)',
       result: _.intersectionBy([2.1, 1.2], [2.3, 3.4], Math.floor),
-      tip: '給你多一層自由度，先加工再交集。',
+      tip: '先加工再交集。',
       demo: ''
     },
     {
@@ -83,7 +76,21 @@ Math.floor 是條件，也就是「先取整數」後再比對 </br>
       code: '_.intersectionWith([{ x: 1 }], [{ x: 1 }], _.isEqual)',
       result: _.intersectionWith([{ x: 1 }], [{ x: 1 }], _.isEqual),
       tip: '這對於物件超有用，能正確比出一樣的資料。',
-      demo: ''
+      demo: `
+      基本版</br>
+      _.intersection([{ x: 1 }], [{ x: 1 }])</br>
+      這樣會回傳空陣列 []，因為兩個物件在記憶體裡是不同的。</br>
+      但其實內容是相同的。</br>
+      </br>
+
+      進階版</br>
+      _.intersectionWith([{ x: 1 }], [{ x: 1 }], _.isEqual)</br>
+      這樣會回傳 [{ x: 1 }]，因為 _.isEqual 判斷它們內容一樣。</br>
+      所以當作「一樣的東西」處理。</br>
+
+      </br>
+      這樣就能正確比出一樣的資料。</br>
+      `
     },
   ];
 }

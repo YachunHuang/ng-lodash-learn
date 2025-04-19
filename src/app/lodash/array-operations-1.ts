@@ -25,7 +25,7 @@ export class ArrayOperations1Component {
       desc: '從陣列{開頭}丟掉 n 個元素。',
       code: "_.drop([1, 2, 3], 2)",
       result: _.drop([1, 2, 3], 2),
-      tip: '就是「前面不要」，丟掉頭幾個。',
+      tip: '「前面不要」，丟掉頭幾個。',
       demo: ''
     },
     {
@@ -57,7 +57,7 @@ export class ArrayOperations1Component {
       desc: '把陣列中最後一個元素丟掉，回傳剩下的前面那些。',
       code: `_.initial([1, 2, 3])`,
       result: _.initial([1, 2, 3]),
-      tip: '就像是「尾巴不要」，只保留前面的。',
+      tip: '「尾巴不要」，只保留前面的。',
       demo: ''
     },
     {
