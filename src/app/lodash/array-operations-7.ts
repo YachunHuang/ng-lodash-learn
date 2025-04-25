@@ -95,6 +95,7 @@ export class ArrayOperations7Component implements OnInit {
   }
 
   pullDemo1() {
+    // 100_000 是 JavaScript 的 數字分隔符號（Numeric Separator） 語法，是從 ES2021（ES12） 開始支援的語法糖
     // const array = Array.from({ length: 100_000 }, (_, i) => i);
     // const valuesToRemove = [123, 456, 789, 9999, 54321];
 
@@ -110,7 +111,7 @@ export class ArrayOperations7Component implements OnInit {
     // arr2.filter(i => !valuesToRemove.includes(i));
     // console.timeEnd('filter.includes');
 
-    const array = Array.from({ length: 100_000 }, (_, i) => i);
+    const array = Array.from({ length: 100000  }, (_, i) => i);
     const valuesToRemove = [123, 456, 789, 9999, 54321];
 
     // filter + includes
