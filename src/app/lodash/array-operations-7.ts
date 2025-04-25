@@ -32,9 +32,9 @@ export class ArrayOperations7Component implements OnInit {
     console.timeEnd('Native findIndex');
 
     // 測試 Lodash findIndex()
-    console.time('Lodash findIndex');
+    console.time('Lodash _.findIndex');
     _.findIndex(users, { age: 18 });
-    console.timeEnd('Lodash findIndex');
+    console.timeEnd('Lodash _.findIndex');
   }
 
   /** 找出只有第一組資料有的項目（差集) */
@@ -52,7 +52,7 @@ export class ArrayOperations7Component implements OnInit {
 
     const addedItems = _.differenceWith(afterEdit, beforeEdit, _.isEqual);
 
-    console.log(addedItems);
+    // console.log(addedItems);
     // 結果：[ { id: 3, tag: { name: 'Node.js' } } ]
   }
 
@@ -71,7 +71,7 @@ export class ArrayOperations7Component implements OnInit {
 
     const commonTags = _.intersectionWith(apiResultA, apiResultB, _.isEqual);
 
-    console.log(commonTags);
+    // console.log(commonTags);
     // 結果：[ { id: 2, name: '後端' } ]
   }
 
@@ -87,10 +87,10 @@ export class ArrayOperations7Component implements OnInit {
       .filter(name => !!name)
       .join('、');
 
-    console.log(label);
+    // console.log(label);
 
     const label2 = _.join(_.compact(_.map(tagList, 'name')), '、');
-    console.log(label2);
+    // console.log(label2);
     // 結果："前端、資料庫"
   }
 
@@ -134,9 +134,9 @@ export class ArrayOperations7Component implements OnInit {
 
     // _.pull
     const arr3 = [...array];
-    console.time('lodash.pull');
+    console.time('lodash _.pull');
     _.pull(arr3, ...valuesToRemove);
-    console.timeEnd('lodash.pull');
+    console.timeEnd('lodash _.pull');
 
     // filter + Set.has
     // 會重複執行大量計算
