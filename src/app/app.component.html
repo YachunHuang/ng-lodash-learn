@@ -1,5 +1,8 @@
 <main class="main">
   <div class="content">
+    <div>
+      <h1><a href="https://lodash.com/" target="_blank">Lodash</a></h1>
+    </div>
     <div class="type-tabs">
       @for (tab of typeTabs; track $index) {
       <button
@@ -12,18 +15,20 @@
     </div>
     @if (selectedType === 'Array') {
     <div class="tabs">
-      @for (tab of tabs; track $index) {
+      @for (tab of arrayTabs; track $index) {
       <button
-        (click)="selectedTab = tab.id"
-        [class.active]="selectedTab === tab.id"
+        (click)="selectedArrayTab = tab.id"
+        [class.active]="selectedArrayTab === tab.id"
       >
         {{ tab.name }}
       </button>
       }
     </div>
-    {{ tabs[selectedTab].desc }}
+    <div style="margin-bottom: 8px; color: #666;">
+      {{ arrayTabs[selectedArrayTab].desc }}
+    </div>
     <div class="tab-content">
-      @switch (selectedTab) { @case (0) {
+      @switch (selectedArrayTab) { @case (0) {
       <array-1></array-1>
       } @case (1) {
       <array-2></array-2>
@@ -39,6 +44,38 @@
       <array-7></array-7>
       } @case (7) {
       <array-8></array-8>
+      } }
+    </div>
+    }@else if(selectedType === 'Collection') {
+    <div class="tabs">
+      @for (tab of collectionTabs; track $index) {
+      <button
+        (click)="selectedCollectionTab = tab.id"
+        [class.active]="selectedCollectionTab === tab.id"
+      >
+        {{ tab.name }}
+      </button>
+      }
+    </div>
+    <div class="tab-content">
+      @switch (selectedCollectionTab) { @case (0) {
+      <collection-1></collection-1>
+      } @case (1) {
+      <collection-2></collection-2>
+      } @case (2) {
+      <collection-3></collection-3>
+      } @case (3) {
+      <collection-4></collection-4>
+      } @case (4) {
+      <collection-5></collection-5>
+      } @case (5) {
+      <collection-6></collection-6>
+      } @case (6) {
+      <collection-7></collection-7>
+      } @case (7) {
+      <collection-8></collection-8>
+      }@case (8) {
+      <collection-9></collection-9>
       } }
     </div>
     }
