@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'array-operations-7',
+  selector: 'array-7',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './array-7.html',

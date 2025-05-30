@@ -4,10 +4,10 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'array-operations-8',
+  selector: 'array-8',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './array.html',
+  templateUrl: '../operations.html',
 })
 export class Array8Component {
 

@@ -4,10 +4,10 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'array-operations-4',
+  selector: 'array-4',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './array.html',
+  templateUrl: '../operations.html',
 })
 export class Array4Component {
 
