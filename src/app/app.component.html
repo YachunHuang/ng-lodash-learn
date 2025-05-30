@@ -1,6 +1,16 @@
 <main class="main">
   <div class="content">
-    Array
+    <div class="type-tabs">
+      @for (tab of typeTabs; track $index) {
+      <button
+        (click)="selectedType = tab"
+        [class.active]="selectedType === tab"
+      >
+        {{ tab }}
+      </button>
+      }
+    </div>
+    @if (selectedType === 'Array') {
     <div class="tabs">
       @for (tab of tabs; track $index) {
       <button
@@ -11,32 +21,27 @@
       </button>
       }
     </div>
-    {{tabs[selectedTab].desc}}
+    {{ tabs[selectedTab].desc }}
     <div class="tab-content">
-      @switch (selectedTab) {
-        @case (0) {
-          <array-operations-1></array-operations-1>
-        }
-        @case (1) {
-          <array-operations-2></array-operations-2>
-        }
-        @case (2) {
-          <array-operations-3></array-operations-3>
-        }
-        @case (3) {
-          <array-operations-4></array-operations-4>
-        }
-        @case (4) {
-          <array-operations-5></array-operations-5>
-        }
-        @case (5) {
-          <array-operations-6></array-operations-6>
-        }
-        @case (6) {
-          <array-operations-7></array-operations-7>
-        }
-      }
+      @switch (selectedTab) { @case (0) {
+      <array-operations-1></array-operations-1>
+      } @case (1) {
+      <array-operations-2></array-operations-2>
+      } @case (2) {
+      <array-operations-3></array-operations-3>
+      } @case (3) {
+      <array-operations-4></array-operations-4>
+      } @case (4) {
+      <array-operations-5></array-operations-5>
+      } @case (5) {
+      <array-operations-6></array-operations-6>
+      } @case (6) {
+      <array-operations-7></array-operations-7>
+      } @case (7) {
+      <array-operations-8></array-operations-8>
+      } }
     </div>
+    }
   </div>
 </main>
 <router-outlet />

@@ -7,9 +7,9 @@ import { Component } from '@angular/core';
   selector: 'array-operations-3',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './array-operations.html',
+  templateUrl: './array.html',
 })
-export class ArrayOperations3Component {
+export class Array3Component {
 
   examples = [
     {

@@ -8,9 +8,9 @@ import { CommonModule } from '@angular/common';
   selector: 'array-operations-7',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './array-operations-7.html',
+  templateUrl: './array-7.html',
 })
-export class ArrayOperations7Component implements OnInit {
+export class Array7Component implements OnInit {
 
   ngOnInit(): void {
     this.findIndexTimeDemo1();
