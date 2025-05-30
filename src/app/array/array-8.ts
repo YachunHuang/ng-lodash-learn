@@ -15,23 +15,16 @@ export class Array8Component {
     {
       title: '_.remove(array, predicate)',
       desc: '移除符合條件的元素，原陣列會被改動。',
-      code: `let arr = [1, 2, 3, 4]; _.remove(arr, n => n % 2 == 0)`,
-      result: (() => {
-        let arr = [1, 2, 3, 4];
-        _.remove(arr, n => n % 2 == 0);
-        return arr;
-      })(),
+      code: `_.remove([1, 2, 3, 4], n => n % 2 == 0)`,
+      result: _.remove([1, 2, 3, 4], n => n % 2 == 0),
       tip: '會直接修改原本的 array！',
       demo: ''
     },
     {
       title: '_.reverse(array)',
       desc: '反轉陣列順序，會修改原陣列。',
-      code: `let arr = [1, 2, 3]; _.reverse(arr)`,
-      result: (() => {
-        let arr = [1, 2, 3];
-        return _.reverse(arr);
-      })(),
+      code: `_.reverse([1, 2, 3])`,
+      result: _.reverse([1, 2, 3]),
       tip: '這不是回傳新的 array，而是直接改動原 array！',
       demo: ''
     },
@@ -109,10 +102,10 @@ export class Array8Component {
     },
     {
       title: '_.tail(array)',
-      desc: '回傳除了第一個元素以外的剩下所有元素。',
+      desc: '	回傳第一個之後的所有元素',
       code: `_.tail([1, 2, 3])`,
       result: _.tail([1, 2, 3]),
-      tip: '不改原本的 array，很適合做 immutable 操作。',
+      tip: '不改原本的 array',
       demo: ''
     },
     {
@@ -152,15 +145,15 @@ export class Array8Component {
       desc: '回傳所有不重複的元素。',
       code: `_.union([2], [1, 2])`,
       result: _.union([2], [1, 2]),
-      tip: '像是把多個陣列 merge 起來去重。',
+      tip: '像是把多個陣列 merge 起來去除重複。',
       demo: ''
     },
     {
       title: '_.unionBy([...arrays], iteratee)',
-      desc: '允許指定條件合併去重。',
+      desc: '指定條件合併去除重複。',
       code: `_.unionBy([2.1], [1.2, 2.3], Math.floor)`,
       result: _.unionBy([2.1], [1.2, 2.3], Math.floor),
-      tip: '給你自訂唯一的依據。',
+      tip: '合併多個陣列，並用指定的方式判斷哪些項目算「重複」，然後只保留第一個出現的。',
       demo: ''
     },
     {
@@ -168,27 +161,40 @@ export class Array8Component {
       desc: '自訂兩個值相等的比較方式。',
       code: `_.unionWith([1, 2], [2, 3], _.isEqual)`,
       result: _.unionWith([1, 2], [2, 3], _.isEqual),
-      tip: '自訂 deep equal 的合併方式。',
+      tip: '合併多個陣列，並且用指定的函式來決定「兩個值是否相等」接著去除重複。',
     },
     {
       title: '_.uniq(array)',
       desc: '去除重複值，回傳新陣列。',
       code: `_.uniq([2, 1, 2])`,
       result: _.uniq([2, 1, 2]),
-      tip: '排序前或後都可以用，但效率不如 sortedUniq。',
+      tip: '排序前或後都可以用，效率比 sortedUniq 差。',
       demo: ''
     },
     {
       title: '_.uniqBy(array, iteratee)',
       desc: '自訂條件去除重複。',
-      code: `_.uniqBy([1.1, 1.2, 2.3], Math.floor)`,
-      result: _.uniqBy([1.1, 1.2, 2.3], Math.floor),
-      tip: '如果資料是物件很實用。',
+      code: `</br>const users = [
+  { id: 1, name: 'Alice' },
+  { id: 2, name: 'Alice' },
+  { id: 1, name: 'Bob' }
+];
+</br>
+_.uniqBy(users, user => user.id)`,
+      result: (() => {
+        const users = [
+          { id: 1, name: 'Alice' },
+          { id: 2, name: 'Alice' },
+          { id: 1, name: 'Bob' }
+        ];
+        return _.uniqBy(users, user => user.id)
+      })(),
+      tip: '根據指定的條件，移除重複的項目，只保留第一個出現的。',
       demo: ''
     },
     {
       title: '_.uniqWith(array, comparator)',
-      desc: '自訂比較函式做去重。',
+      desc: '自訂比較函式做去除重複。',
       code: `_.uniqWith([1, 2], _.isEqual)`,
       result: _.uniqWith([1, 2], _.isEqual),
       tip: '與 unionWith 類似，適合複雜比對。',
@@ -200,14 +206,18 @@ export class Array8Component {
       code: `_.unzip([[1, 2], [10, 20]])`,
       result: _.unzip([[1, 2], [10, 20]]),
       tip: '行列對調的概念。',
-      demo: ''
+      demo: `</br>
+      [</br>
+  [1, 10], // 把所有的「第一個」元素組成一組</br>
+  [2, 20]  // 把所有的「第二個」元素組成一組</br>
+]`
     },
     {
       title: '_.unzipWith(array, iteratee)',
       desc: '一邊拆一邊做運算。',
       code: `_.unzipWith([[1, 10], [2, 20]], _.add)`,
       result: _.unzipWith([[1, 10], [2, 20]], _.add),
-      tip: '加總轉置的常見用途。',
+      tip: '加總轉置',
       demo: ''
     },
     {

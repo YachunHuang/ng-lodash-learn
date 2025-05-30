@@ -3,7 +3,7 @@
   <div *ngFor="let example of examples" class="card">
     <h2>{{ example.title }}</h2>
     <p><strong>說明:</strong> {{ example.desc }}</p>
-    <p><strong>範例:</strong> <code>{{ example.code }}</code></p>
+    <p><strong>範例:</strong> <span [innerHTML]="example.code"></span></p>
     <p><strong>結果:</strong> <code>{{ example.result | json }}</code></p>
     <p><strong>🧩</strong> {{ example.tip }}</p>
     <p *ngIf="example.demo"> 💡 <span [innerHTML]="example.demo"></span></p>
