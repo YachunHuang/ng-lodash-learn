@@ -44,7 +44,7 @@
       <ul>
         <li *ngFor="let type of typeTabs; let i = index">
           <div class="type-title" (click)="toggleType(i)">
-            <span [class.expanded]="expandedTypeIndex === i">▶</span>
+            <span class="arrow" [class.expanded]="expandedTypeIndex === i"></span>
             {{ type }}
           </div>
           <ul *ngIf="expandedTypeIndex === i">
