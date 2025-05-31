@@ -1,37 +1,36 @@
 <main class="main">
   <div class="sidebar-header">
-    <h1>Lodash</h1>
+    <div class="brand">
+      <img
+        src="assets/images/kiwi.jpg"
+        alt="Kiwi"
+        class="brand-icon"
+      />
+      <span class="brand-title">Lodash</span>
+    </div>
     <div class="header-links">
       <a
         href="https://lodash.com/"
         target="_blank"
         title="lodash official site"
+        class="icon-link"
       >
         <img
           src="https://lodash.com/assets/img/lodash.svg"
           alt="lodash"
-          style="
-            width: 22px;
-            height: 22px;
-            vertical-align: middle;
-            margin-right: 4px;
-          "
+          class="icon"
         />
       </a>
       <a
         href="https://github.com/YachunHuang/ng-lodash-learn"
         target="_blank"
         title="kiwi lodash github"
+        class="icon-link"
       >
         <img
-          src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+          src="assets/images/github-mark.svg"
           alt="GitHub"
-          style="
-            width: 22px;
-            height: 22px;
-            vertical-align: middle;
-            margin-right: 4px;
-          "
+          class="icon"
         />
       </a>
     </div>
@@ -44,7 +43,10 @@
       <ul>
         <li *ngFor="let type of typeTabs; let i = index">
           <div class="type-title" (click)="toggleType(i)">
-            <span class="arrow" [class.expanded]="expandedTypeIndex === i"></span>
+            <span
+              class="arrow"
+              [class.expanded]="expandedTypeIndex === i"
+            ></span>
             {{ type }}
           </div>
           <ul *ngIf="expandedTypeIndex === i">
