@@ -1,84 +1,91 @@
 <main class="main">
-  <div class="content">
-    <div>
-      <h1><a href="https://lodash.com/" target="_blank">Lodash</a></h1>
-    </div>
-    <div class="type-tabs">
-      @for (tab of typeTabs; track $index) {
-      <button
-        (click)="selectedType = tab"
-        [class.active]="selectedType === tab"
+  <div class="sidebar-header">
+    <h1>Lodash</h1>
+    <div class="header-links">
+      <a href="https://lodash.com/" target="_blank" title="lodash official site">
+        <img
+          src="https://lodash.com/assets/img/lodash.svg"
+          alt="lodash"
+          style="
+            width: 22px;
+            height: 22px;
+            vertical-align: middle;
+            margin-right: 4px;
+          "
+        />
+      </a>
+      <a
+        href="https://github.com/YachunHuang/ng-lodash-learn"
+        target="_blank"
+        title="kiwi lodash github"
       >
-        {{ tab }}
-      </button>
-      }
+        <img
+          src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+          alt="GitHub"
+          style="
+            width: 22px;
+            height: 22px;
+            vertical-align: middle;
+            margin-right: 4px;
+          "
+        />
+      </a>
     </div>
-    @if (selectedType === 'Array') {
-    <div class="tabs">
-      @for (tab of arrayTabs; track $index) {
-      <button
-        (click)="selectedArrayTab = tab.id"
-        [class.active]="selectedArrayTab === tab.id"
-      >
-        {{ tab.name }}
-      </button>
-      }
+  </div>
+  <div class="sidebar-content">
+    <nav class="sidebar">
+      <ul>
+        <li *ngFor="let type of typeTabs; let i = index">
+          <div class="type-title" (click)="toggleType(i)">
+            <span [class.expanded]="expandedTypeIndex === i">▶</span>
+            {{ type }}
+          </div>
+          <ul *ngIf="expandedTypeIndex === i">
+            <li
+              *ngFor="let tab of getTabs(type); let j = index"
+              [class.active]="isActiveTab(type, j)"
+              (click)="selectTab(type, j, $event)"
+            >
+              {{ tab.name }}
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="content">
+      <div *ngIf="selectedType === 'Array'">
+        <div style="margin-bottom: 8px; color: #666">
+          {{ arrayTabs[selectedArrayTab]?.desc }}
+        </div>
+        <div class="tab-content">
+          <ng-container [ngSwitch]="selectedArrayTab">
+            <array-1 *ngSwitchCase="0"></array-1>
+            <array-2 *ngSwitchCase="1"></array-2>
+            <array-3 *ngSwitchCase="2"></array-3>
+            <array-4 *ngSwitchCase="3"></array-4>
+            <array-5 *ngSwitchCase="4"></array-5>
+            <array-6 *ngSwitchCase="5"></array-6>
+            <array-7 *ngSwitchCase="6"></array-7>
+            <array-8 *ngSwitchCase="7"></array-8>
+          </ng-container>
+        </div>
+      </div>
+      <div *ngIf="selectedType === 'Collection'">
+        <div class="tab-content">
+          <ng-container [ngSwitch]="selectedCollectionTab">
+            <collection-1 *ngSwitchCase="0"></collection-1>
+            <collection-2 *ngSwitchCase="1"></collection-2>
+            <collection-3 *ngSwitchCase="2"></collection-3>
+            <collection-4 *ngSwitchCase="3"></collection-4>
+            <collection-5 *ngSwitchCase="4"></collection-5>
+            <collection-6 *ngSwitchCase="5"></collection-6>
+            <collection-7 *ngSwitchCase="6"></collection-7>
+            <collection-8 *ngSwitchCase="7"></collection-8>
+            <collection-9 *ngSwitchCase="8"></collection-9>
+          </ng-container>
+        </div>
+      </div>
     </div>
-    <div style="margin-bottom: 8px; color: #666;">
-      {{ arrayTabs[selectedArrayTab].desc }}
-    </div>
-    <div class="tab-content">
-      @switch (selectedArrayTab) { @case (0) {
-      <array-1></array-1>
-      } @case (1) {
-      <array-2></array-2>
-      } @case (2) {
-      <array-3></array-3>
-      } @case (3) {
-      <array-4></array-4>
-      } @case (4) {
-      <array-5></array-5>
-      } @case (5) {
-      <array-6></array-6>
-      } @case (6) {
-      <array-7></array-7>
-      } @case (7) {
-      <array-8></array-8>
-      } }
-    </div>
-    }@else if(selectedType === 'Collection') {
-    <div class="tabs">
-      @for (tab of collectionTabs; track $index) {
-      <button
-        (click)="selectedCollectionTab = tab.id"
-        [class.active]="selectedCollectionTab === tab.id"
-      >
-        {{ tab.name }}
-      </button>
-      }
-    </div>
-    <div class="tab-content">
-      @switch (selectedCollectionTab) { @case (0) {
-      <collection-1></collection-1>
-      } @case (1) {
-      <collection-2></collection-2>
-      } @case (2) {
-      <collection-3></collection-3>
-      } @case (3) {
-      <collection-4></collection-4>
-      } @case (4) {
-      <collection-5></collection-5>
-      } @case (5) {
-      <collection-6></collection-6>
-      } @case (6) {
-      <collection-7></collection-7>
-      } @case (7) {
-      <collection-8></collection-8>
-      }@case (8) {
-      <collection-9></collection-9>
-      } }
-    </div>
-    }
   </div>
 </main>
 <router-outlet />

@@ -17,12 +17,14 @@ import { Collection6Component } from './collection/collection-6';
 import { Collection7Component } from './collection/collection-7';
 import { Collection8Component } from './collection/collection-8';
 import { Collection9Component } from './collection/collection-9';
+import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
+    CommonModule,
     RouterOutlet,
     Array1Component, Array2Component,
     Array3Component, Array4Component,
@@ -72,4 +74,32 @@ export class AppComponent {
     { id: 7, name: 'Collection Operations', desc: '' },
     { id: 8, name: '抽樣', desc: '' },
   ];
+
+    // 展開/收合主類別
+  expandedTypeIndex: number | null = 0;
+
+  toggleType(i: number) {
+    this.expandedTypeIndex = this.expandedTypeIndex === i ? null : i;
+  }
+
+  getTabs(type: string) {
+    if (type === 'Array') return this.arrayTabs;
+    if (type === 'Collection') return this.collectionTabs;
+    return [];
+  }
+
+  isActiveTab(type: string, idx: number) {
+    return (type === 'Array' && this.selectedType === 'Array' && this.selectedArrayTab === idx)
+      || (type === 'Collection' && this.selectedType === 'Collection' && this.selectedCollectionTab === idx);
+  }
+
+  selectTab(type: string, idx: number, event: Event) {
+    event.stopPropagation();
+    this.selectedType = type;
+    if (type === 'Array') {
+      this.selectedArrayTab = idx;
+    } else if (type === 'Collection') {
+      this.selectedCollectionTab = idx;
+    }
+  }
 }
