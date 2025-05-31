@@ -39,7 +39,8 @@ import { RouterOutlet } from '@angular/router';
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppComponent {
-  title = 'ng-lodash-learn';
+  /** 是否展開側邊欄 */
+  sidebarOpen = false;
   /** 所選的類型 */
   selectedType: string = 'Array';
   /** Array 選擇的項目 */
