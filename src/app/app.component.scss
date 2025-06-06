@@ -10,6 +10,21 @@
   backdrop-filter: saturate(1);
 }
 
+.btn-back-to-top {
+  position: fixed;
+  right: 32px;
+  bottom: 32px;
+  z-index: 9999;
+  padding: 12px 20px;
+  font-size: 18px;
+  border-radius: 50px;
+  background: #63788d;
+  color: #fff;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
 .content {
   flex: 1 1 0;
   min-width: 0;

@@ -1,23 +1,10 @@
-import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core';
+import { ArrayItems, CollectionItems, DateItems, FunctionItems, LangItems, MathItems, NumberItems, ObjectItems, SeqItems, StringItems, TypeTabs, UtilItems } from './shared/category.interface';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 import { Array1Component } from './array/array-1';
-import { Array2Component } from './array/array-2';
-import { Array3Component } from './array/array-3';
-import { Array4Component } from './array/array-4';
-import { Array5Component } from './array/array-5';
-import { Array6Component } from './array/array-6';
-import { Array7Component } from './array/array-7';
-import { Array8Component } from './array/array-8';
 import { Collection1Component } from './collection/collection-1';
-import { Collection2Component } from './collection/collection-2';
-import { Collection3Component } from './collection/collection-3';
-import { Collection4Component } from './collection/collection-4';
-import { Collection5Component } from './collection/collection-5';
-import { Collection6Component } from './collection/collection-6';
-import { Collection7Component } from './collection/collection-7';
-import { Collection8Component } from './collection/collection-8';
-import { Collection9Component } from './collection/collection-9';
 import { CommonModule } from '@angular/common';
+import { HighlightDirective } from './shared/highlight.directive';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -26,19 +13,18 @@ import { RouterOutlet } from '@angular/router';
   imports: [
     CommonModule,
     RouterOutlet,
-    Array1Component, Array2Component,
-    Array3Component, Array4Component,
-    Array5Component, Array6Component,
-    Array7Component, Array8Component,
-    Collection1Component, Collection2Component,
-    Collection3Component, Collection4Component,
-    Collection5Component, Collection6Component,
-    Collection7Component, Collection8Component,Collection9Component],
+    HighlightDirective,
+    Array1Component,
+    Collection1Component,],
   templateUrl: './app.component.html',
+  providers: [],
   styleUrl: './app.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppComponent {
+
+  @ViewChild('backToTopBtn')
+  backToTopBtn!: ElementRef<HTMLButtonElement>;
   /** 是否展開側邊欄 */
   sidebarOpen = false;
   /** 所選的類型 */
@@ -46,10 +32,10 @@ export class AppComponent {
   /** Array 選擇的項目 */
   selectedArrayTab: number = 0;
   /** Collection 選擇的項目 */
-  selectedCollectionTab: number = 0;
+  selectedCollectionTab: string = '';
 
   /** 類型 */
-  typeTabs = ['Array', 'Collection', 'Date', 'Function', 'Lang', 'Math', 'Number', 'Object', 'Seq', 'String', 'Util'];
+  typeTabs = TypeTabs;
 
   /** Array 項目 */
   arrayTabs = [
@@ -76,31 +62,41 @@ export class AppComponent {
     { id: 8, name: '抽樣', desc: '' },
   ];
 
-    // 展開/收合主類別
+  // 展開/收合主類別
   expandedTypeIndex: number | null = 0;
 
+  /** 收合類別 */
   toggleType(i: number) {
     this.expandedTypeIndex = this.expandedTypeIndex === i ? null : i;
   }
 
-  getTabs(type: string) {
-    if (type === 'Array') return this.arrayTabs;
-    if (type === 'Collection') return this.collectionTabs;
-    return [];
+  /** 依類別取得項目 */
+  getItems(type: (typeof TypeTabs)[number]) {
+    switch (type) {
+      case TypeTabs[0]: return ArrayItems;         // 'Array'
+      case TypeTabs[1]: return CollectionItems;    // 'Collection'
+      case TypeTabs[2]: return DateItems;          // 'Date'
+      case TypeTabs[3]: return FunctionItems;      // 'Function'
+      case TypeTabs[4]: return LangItems;          // 'Lang'
+      case TypeTabs[5]: return MathItems;          // 'Math'
+      case TypeTabs[6]: return NumberItems;        // 'Number'
+      case TypeTabs[7]: return ObjectItems;        // '物件'
+      case TypeTabs[8]: return SeqItems;           // 'Seq'
+      case TypeTabs[9]: return StringItems;        // 'String'
+      case TypeTabs[10]: return UtilItems;         // 'Util'
+      default: return [];
+    }
   }
 
   isActiveTab(type: string, idx: number) {
-    return (type === 'Array' && this.selectedType === 'Array' && this.selectedArrayTab === idx)
-      || (type === 'Collection' && this.selectedType === 'Collection' && this.selectedCollectionTab === idx);
+    return (type === 'Array' && this.selectedType === 'Array' && this.selectedArrayTab === idx);
   }
 
-  selectTab(type: string, idx: number, event: Event) {
-    event.stopPropagation();
-    this.selectedType = type;
-    if (type === 'Array') {
-      this.selectedArrayTab = idx;
-    } else if (type === 'Collection') {
-      this.selectedCollectionTab = idx;
-    }
+  selectTab(item: string, event: Event) {
+    this.selectedCollectionTab = item;
+  }
+
+  scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }

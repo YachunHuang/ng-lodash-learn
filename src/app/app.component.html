@@ -1,89 +1,72 @@
 <main class="main">
-    <div class="sidebar-header">
-      <div class="brand">
-        <img src="assets/images/kiwi.jpg" alt="Kiwi" class="brand-icon" />
-        <span class="brand-title">Lodash</span>
-      </div>
-      <div class="header-links">
-        <a href="https://lodash.com/" target="_blank" class="icon-link">
-          <img src="https://lodash.com/assets/img/lodash.svg" class="icon" />
-        </a>
-        <a
-          href="https://github.com/YachunHuang/ng-lodash-learn"
-          target="_blank"
-          class="icon-link"
-        >
-          <img src="assets/images/github-mark.svg" alt="GitHub" class="icon" />
-        </a>
-        <a
-          href="https://hackmd.io/@KiwiHuang/r1rGDf401e"
-          target="_blank"
-          class="icon-link"
-        >
-          <img src="https://hackmd.io/favicon.png" alt="HackMD" class="icon" />
-        </a>
-      </div>
-      <button class="sidebar-toggle" (click)="sidebarOpen = !sidebarOpen">
-        ☰
-      </button>
+  <div class="sidebar-header">
+    <div class="brand">
+      <img src="assets/images/kiwi.jpg" alt="Kiwi" class="brand-icon" />
+      <span class="brand-title">Lodash</span>
     </div>
-    <div class="sidebar-content">
-      <nav class="sidebar" [class.open]="sidebarOpen">
-        <ul>
-          <li *ngFor="let type of typeTabs; let i = index">
-            <div class="type-title" (click)="toggleType(i)">
-              <span
-                class="arrow"
-                [class.expanded]="expandedTypeIndex === i"
-              ></span>
-              {{ type }}
-            </div>
-            <ul *ngIf="expandedTypeIndex === i">
-              <li
-                *ngFor="let tab of getTabs(type); let j = index"
-                [class.active]="isActiveTab(type, j)"
-                (click)="selectTab(type, j, $event)"
-              >
-                {{ tab.name }}
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
-      <div class="content">
-        <div *ngIf="selectedType === 'Array'">
-          <div style="margin-bottom: 8px; color: #666">
-            {{ arrayTabs[selectedArrayTab].desc }}
+    <div class="header-links">
+      <a href="https://lodash.com/" target="_blank" class="icon-link">
+        <img src="https://lodash.com/assets/img/lodash.svg" class="icon" />
+      </a>
+      <a
+        href="https://github.com/YachunHuang/ng-lodash-learn"
+        target="_blank"
+        class="icon-link"
+      >
+        <img src="assets/images/github-mark.svg" alt="GitHub" class="icon" />
+      </a>
+      <a
+        href="https://hackmd.io/@KiwiHuang/r1rGDf401e"
+        target="_blank"
+        class="icon-link"
+      >
+        <img src="https://hackmd.io/favicon.png" alt="HackMD" class="icon" />
+      </a>
+    </div>
+    <button class="sidebar-toggle" (click)="sidebarOpen = !sidebarOpen">
+      ☰
+    </button>
+  </div>
+  <div class="sidebar-content">
+    <nav class="sidebar" [class.open]="sidebarOpen">
+      <ul>
+        <li *ngFor="let type of typeTabs; let i = index">
+          <div class="type-title" (click)="toggleType(i)">
+            <span
+              class="arrow"
+              [class.expanded]="expandedTypeIndex === i"
+            ></span>
+            {{ type }}
           </div>
-          <div class="tab-content">
-            <ng-container [ngSwitch]="selectedArrayTab">
-              <array-1 *ngSwitchCase="0"></array-1>
-              <array-2 *ngSwitchCase="1"></array-2>
-              <array-3 *ngSwitchCase="2"></array-3>
-              <array-4 *ngSwitchCase="3"></array-4>
-              <array-5 *ngSwitchCase="4"></array-5>
-              <array-6 *ngSwitchCase="5"></array-6>
-              <array-7 *ngSwitchCase="6"></array-7>
-              <array-8 *ngSwitchCase="7"></array-8>
-            </ng-container>
-          </div>
+          <ul *ngIf="expandedTypeIndex === i">
+            <li
+              *ngFor="let item of getItems(type); let j = index"
+              [class.active]="item === selectedCollectionTab"
+              (click)="selectTab(item, $event)"
+            >
+              {{ item }}
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="content">
+      <div *ngIf="selectedType === 'Array'">
+        <div style="margin-bottom: 8px; color: #666">
+          {{ arrayTabs[selectedArrayTab].desc }}
         </div>
-        <div *ngIf="selectedType === 'Collection'">
-          <div class="tab-content">
-            <ng-container [ngSwitch]="selectedCollectionTab">
-              <collection-1 *ngSwitchCase="0"></collection-1>
-              <collection-2 *ngSwitchCase="1"></collection-2>
-              <collection-3 *ngSwitchCase="2"></collection-3>
-              <collection-4 *ngSwitchCase="3"></collection-4>
-              <collection-5 *ngSwitchCase="4"></collection-5>
-              <collection-6 *ngSwitchCase="5"></collection-6>
-              <collection-7 *ngSwitchCase="6"></collection-7>
-              <collection-8 *ngSwitchCase="7"></collection-8>
-              <collection-9 *ngSwitchCase="8"></collection-9>
-            </ng-container>
-          </div>
+        <div class="tab-content">
+          <array-1 [itemType]="selectedCollectionTab"></array-1>
         </div>
       </div>
+      <div class="tab-content" *ngIf="selectedType === 'Collection'">
+        <collection-1 [itemType]="selectedCollectionTab"></collection-1>
+      </div>
     </div>
+  </div>
 </main>
+<!-- 浮板按鈕 -->
+<button #backToTopBtn class="btn-back-to-top" (click)="scrollToTop()">
+  回到最上面
+</button>
 <router-outlet />
