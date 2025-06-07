@@ -42,7 +42,7 @@
             <li
               *ngFor="let item of getItems(type); let j = index"
               [class.active]="item === selectedCollectionTab"
-              (click)="selectTab(item, $event)"
+              (click)="selectTab(type, item)"
             >
               {{ item }}
             </li>
@@ -59,14 +59,11 @@
           <array-1 [itemType]="selectedCollectionTab"></array-1>
         </div>
       </div>
+
       <div class="tab-content" *ngIf="selectedType === 'Collection'">
         <collection-1 [itemType]="selectedCollectionTab"></collection-1>
       </div>
     </div>
   </div>
 </main>
-<!-- 浮板按鈕 -->
-<button #backToTopBtn class="btn-back-to-top" (click)="scrollToTop()">
-  回到最上面
-</button>
 <router-outlet />

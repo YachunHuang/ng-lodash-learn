@@ -89,14 +89,12 @@ export class AppComponent {
   }
 
   isActiveTab(type: string, idx: number) {
-    return (type === 'Array' && this.selectedType === 'Array' && this.selectedArrayTab === idx);
+    return (type === 'Array' && this.selectedType === 'Array' && this.selectedArrayTab === idx)
+      || (type === 'Collection' && this.selectedType === 'Collection');
   }
 
-  selectTab(item: string, event: Event) {
+  selectTab(type:string,item: string) {
     this.selectedCollectionTab = item;
-  }
-
-  scrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    this.selectedType = type;
   }
 }
