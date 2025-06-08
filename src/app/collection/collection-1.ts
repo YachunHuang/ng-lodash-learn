@@ -32,6 +32,7 @@ export class Collection1Component implements OnChanges {
       return acc;
     }, {} as Record<string, number>)`,
       result: _.countBy([6.1, 4.2, 6.3], Math.floor),
+      tip: ''
     },
     {
       title: '_.every(collection, predicate)',
@@ -39,6 +40,7 @@ export class Collection1Component implements OnChanges {
       code: `_.every([1, 2, 3], n => n > 0)`,
       typescript: `[1, 2, 3].every(n => n > 0)`,
       result: _.every([1, 2, 3], n => n > 0),
+      tip: ''
     },
     {
       title: '_.filter(collection, predicate)',
@@ -46,6 +48,7 @@ export class Collection1Component implements OnChanges {
       code: `_.filter([1, 2, 3], n => n % 2 === 1)`,
       typescript: `[1, 2, 3].filter(n => n % 2 === 1)`,
       result: _.filter([1, 2, 3], n => n % 2 === 1),
+      tip: ''
     },
     {
       title: '_.find(collection, predicate)',
@@ -53,6 +56,7 @@ export class Collection1Component implements OnChanges {
       code: `_.find([{a: 1}, {a: 2}], {a: 2})`,
       typescript: `[{a: 1}, {a: 2}].find(item => _.isMatch(item, {a: 2})) // 需用 isMatch 判斷物件`,
       result: _.find([{ a: 1 }, { a: 2 }], { a: 2 }),
+      tip: ''
     },
     {
       title: '_.findLast(collection, predicate)',
@@ -60,6 +64,7 @@ export class Collection1Component implements OnChanges {
       code: `_.findLast([{a: 1}, {a: 2}], o => o.a > 1)`,
       typescript: `[{a: 1}, {a: 2}].slice().reverse().find(o => o.a > 1)`,
       result: _.findLast([{ a: 1 }, { a: 2 }], o => o.a > 1),
+      tip: ''
     },
     {
       title: '_.flatMap(collection, iteratee)',
@@ -67,6 +72,7 @@ export class Collection1Component implements OnChanges {
       code: `_.flatMap([1, 2], n => [n, n])`,
       typescript: `[1, 2].flatMap(n => [n, n])`,
       result: _.flatMap([1, 2], n => [n, n]),
+      tip: ''
     },
     {
       title: '_.flatMapDeep(collection, iteratee)',
@@ -74,6 +80,7 @@ export class Collection1Component implements OnChanges {
       code: `_.flatMapDeep([1, [2, [3]]], _.identity)`,
       typescript: `[1, [2, [3]]].flatMap(x => x).flat(Infinity)`,
       result: _.flatMapDeep([1, [2, [3]]], _.identity),
+      tip: ''
     },
     {
       title: '_.flatMapDepth(collection, iteratee, depth)',
@@ -81,6 +88,7 @@ export class Collection1Component implements OnChanges {
       code: `_.flatMapDepth([1, [2, [3]]], _.identity, 1)`,
       typescript: `[1, [2, [3]]].flatMap(x => x).flat(1)`,
       result: _.flatMapDepth([1, [2, [3]]], _.identity, 1),
+      tip: ''
     },
     {
       title: '_.forEach(collection, iteratee)',
@@ -88,6 +96,7 @@ export class Collection1Component implements OnChanges {
       code: `_.forEach([1, 2, 3], n => console.log(n))`,
       typescript: `[1, 2, 3].forEach(n => console.log(n))`,
       result: _.forEach([1, 2, 3], n => console.log(n)),
+      tip: ''
     },
     {
       title: '_.forEachRight(collection, iteratee)',
@@ -95,6 +104,7 @@ export class Collection1Component implements OnChanges {
       code: `_.forEachRight([1, 2, 3], n => console.log(n))`,
       typescript: `[1, 2, 3].slice().reverse().forEach(n => console.log(n))`,
       result: _.forEachRight([1, 2, 3], n => console.log(n)),
+      tip: ''
     },
     {
       title: '_.groupBy(collection, iteratee)',
@@ -106,6 +116,7 @@ export class Collection1Component implements OnChanges {
       return acc;
     }, {} as Record<string, string[]>)`,
       result: _.groupBy(['one', 'two', 'three'], 'length'),
+      tip: ''
     },
     {
       title: '_.includes(collection, value)',
@@ -113,6 +124,7 @@ export class Collection1Component implements OnChanges {
       code: `_.includes([1, 2, 3], 2)`,
       typescript: `[1, 2, 3].includes(2)`,
       result: _.includes([1, 2, 3], 2),
+      tip: ''
     },
     {
       title: '_.invokeMap(collection, methodName)',
@@ -120,6 +132,7 @@ export class Collection1Component implements OnChanges {
       code: `_.invokeMap([[5, 1], [3, 2]], 'sort')`,
       typescript: `[[5, 1], [3, 2]].map(arr => arr.sort())`,
       result: _.invokeMap([[5, 1], [3, 2]], 'sort'),
+      tip: ''
     },
     {
       title: '_.keyBy(collection, iteratee)',
@@ -130,6 +143,7 @@ export class Collection1Component implements OnChanges {
       return acc;
     }, {} as Record<string, { id: string }>)`,
       result: _.keyBy([{ id: 'a' }, { id: 'b' }], 'id'),
+      tip: ''
     },
     {
       title: '_.map(collection, iteratee)',
@@ -137,6 +151,7 @@ export class Collection1Component implements OnChanges {
       code: `_.map([1, 2, 3], n => n * 2)`,
       typescript: `[1, 2, 3].map(n => n * 2)`,
       result: _.map([1, 2, 3], n => n * 2),
+      tip: ''
     },
     {
       title: '_.orderBy(collection, iteratees, orders)',
@@ -144,6 +159,7 @@ export class Collection1Component implements OnChanges {
       code: `_.orderBy([{a:1,b:2}, {a:1,b:1}], ['a', 'b'], ['asc', 'desc'])`,
       typescript: `[{a:1,b:2}, {a:1,b:1}].sort((x, y) => x.a - y.a || (y.b - x.b))`,
       result: _.orderBy([{ a: 1, b: 2 }, { a: 1, b: 1 }], ['a', 'b'], ['asc', 'desc']),
+      tip: ''
     },
     {
       title: '_.partition(collection, predicate)',
@@ -151,6 +167,7 @@ export class Collection1Component implements OnChanges {
       code: `_.partition([1, 2, 3], n => n % 2)`,
       typescript: `const arr = [1, 2, 3]; [arr.filter(n => n % 2), arr.filter(n => !(n % 2))]`,
       result: _.partition([1, 2, 3], n => n % 2),
+      tip: ''
     },
     {
       title: '_.reduce(collection, iteratee, [accumulator])',
@@ -158,6 +175,7 @@ export class Collection1Component implements OnChanges {
       code: `_.reduce([1, 2], (sum, n) => sum + n, 0)`,
       typescript: `[1, 2].reduce((sum, n) => sum + n, 0)`,
       result: _.reduce([1, 2], (sum, n) => sum + n, 0),
+      tip: ''
     },
     {
       title: '_.reduceRight(collection, iteratee, [accumulator])',
@@ -165,6 +183,7 @@ export class Collection1Component implements OnChanges {
       code: `_.reduceRight(['a', 'b', 'c'], (acc, val) => acc + val, '')`,
       typescript: `['a', 'b', 'c'].reduceRight((acc, val) => acc + val, '')`,
       result: _.reduceRight(['a', 'b', 'c'], (acc, val) => acc + val, ''),
+      tip: ''
     },
     {
       title: '_.reject(collection, predicate)',
@@ -172,6 +191,7 @@ export class Collection1Component implements OnChanges {
       code: `_.reject([1, 2, 3], n => n % 2 === 1)`,
       typescript: `[1, 2, 3].filter(n => !(n % 2 === 1))`,
       result: _.reject([1, 2, 3], n => n % 2 === 1),
+      tip: ''
     },
     {
       title: '_.sample(collection)',
@@ -179,13 +199,15 @@ export class Collection1Component implements OnChanges {
       code: `_.sample([1, 2, 3, 4])`,
       typescript: `[1, 2, 3, 4][Math.floor(Math.random() * 4)]`,
       result: _.sample([1, 2, 3, 4]),
+      tip: ''
     },
     {
       title: '_.sampleSize(collection, n)',
       desc: '從集合中隨機取出 n 個不重複的元素。',
       code: `_.sampleSize([1, 2, 3, 4], 2)`,
       typescript: `[1, 2, 3, 4].sort(() => Math.random() - 0.5).slice(0, 2)`,
-      result: _.sampleSize([1, 2, 3, 4], 2)
+      result: _.sampleSize([1, 2, 3, 4], 2),
+      tip: ''
     },
     {
       title: '_.shuffle(collection)',
@@ -193,6 +215,7 @@ export class Collection1Component implements OnChanges {
       code: `_.shuffle([1, 2, 3, 4])`,
       typescript: `[1, 2, 3, 4].sort(() => Math.random() - 0.5)`,
       result: _.shuffle([1, 2, 3, 4]),
+      tip: ''
     },
     {
       title: '_.size(collection)',
@@ -200,6 +223,7 @@ export class Collection1Component implements OnChanges {
       code: `_.size({ a: 1, b: 2 })`,
       typescript: `Object.keys({ a: 1, b: 2 }).length`,
       result: _.size({ a: 1, b: 2 }),
+      tip: ''
     },
     {
       title: '_.some(collection, predicate)',
@@ -207,6 +231,7 @@ export class Collection1Component implements OnChanges {
       code: `_.some([1, 2, 3], n => n > 2)`,
       typescript: `[1, 2, 3].some(n => n > 2)`,
       result: _.some([1, 2, 3], n => n > 2),
+      tip: ''
     },
     {
       title: '_.sortBy(collection, [iteratees])',
@@ -214,6 +239,7 @@ export class Collection1Component implements OnChanges {
       code: `_.sortBy([{a:2}, {a:1}], ['a'])`,
       typescript: `[{a:2}, {a:1}].sort((x, y) => x.a - y.a)`,
       result: _.sortBy([{ a: 2 }, { a: 1 }], ['a']),
+      tip: ''
     }
   ];
 }
