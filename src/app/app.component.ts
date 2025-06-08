@@ -29,38 +29,10 @@ export class AppComponent {
   sidebarOpen = false;
   /** 所選的類型 */
   selectedType: string = 'Array';
-  /** Array 選擇的項目 */
-  selectedArrayTab: number = 0;
   /** Collection 選擇的項目 */
-  selectedCollectionTab: string = '';
-
+  selectedItemType: string = '';
   /** 類型 */
   typeTabs = TypeTabs;
-
-  /** Array 項目 */
-  arrayTabs = [
-    { id: 0, name: '分割', desc: '「切開、取出、丟掉」元素', },
-    { id: 1, name: '比對差異', desc: '「比對差異、交集、去除重複」' },
-    { id: 2, name: '索引', desc: '「找位置」或「找值」' },
-    { id: 3, name: '改變結構', desc: '「改變陣列形狀、合併或拆解結構」' },
-    { id: 4, name: '元素修改', desc: '「直接動手修改陣列裡的值或內容」' },
-    { id: 5, name: '頭尾操作', desc: '操作頭尾，通常用來取單一值' },
-    { id: 6, name: '看效能', desc: '' },
-    { id: 7, name: '其他', desc: '' },
-  ];
-
-  /** Collection 項目 */
-  collectionTabs = [
-    { id: 0, name: '迭代', desc: '' },
-    { id: 1, name: '條件', desc: '' },
-    { id: 2, name: '搜尋', desc: '' },
-    { id: 3, name: '過濾', desc: '' },
-    { id: 4, name: '轉換', desc: '' },
-    { id: 5, name: '群組/計算', desc: '' },
-    { id: 6, name: '排序', desc: '' },
-    { id: 7, name: 'Collection Operations', desc: '' },
-    { id: 8, name: '抽樣', desc: '' },
-  ];
 
   // 展開/收合主類別
   expandedTypeIndex: number | null = 0;
@@ -89,12 +61,12 @@ export class AppComponent {
   }
 
   isActiveTab(type: string, idx: number) {
-    return (type === 'Array' && this.selectedType === 'Array' && this.selectedArrayTab === idx)
+    return (type === 'Array' && this.selectedType === 'Array')
       || (type === 'Collection' && this.selectedType === 'Collection');
   }
 
   selectTab(type:string,item: string) {
-    this.selectedCollectionTab = item;
+    this.selectedItemType = item;
     this.selectedType = type;
   }
 }

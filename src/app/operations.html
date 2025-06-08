@@ -1,12 +1,10 @@
-<div class="container">
-  <div *ngFor="let example of examples" class="card">
-    <h2 [id]="example.title.split('(')[0]">{{example.title}}</h2>
-    <pre>{{example.desc}}</pre>
-    <pre>Example:</pre>
-    <pre><code [appHighlight]="example.typescript" language="typescript"></code></pre>
-    <pre><code [appHighlight]="example.code" language="typescript"></code></pre>
-    <pre>Result:</pre>
-    <code>{{ example.result | json }}</code>
-    <hr />
-  </div>
+<div *ngFor="let example of examples">
+  <h2 [id]="example.title.split('(')[0]">{{example.title}}</h2>
+  <pre>{{example.desc}}</pre>
+  <pre>Example:</pre>
+  <pre><code [appHighlight]="example.typescript" language="typescript"></code></pre>
+  <pre><code [appHighlight]="example.code" language="typescript"></code></pre>
+  <pre>Result:</pre>
+  <code>{{ example.result | json }}</code>
+  <hr />
 </div>

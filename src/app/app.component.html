@@ -1,5 +1,5 @@
-<main class="main">
-  <div class="sidebar-header">
+<div class="lodash-container">
+  <head class="sidebar-header">
     <div class="brand">
       <img src="assets/images/kiwi.jpg" alt="Kiwi" class="brand-icon" />
       <span class="brand-title">Lodash</span>
@@ -26,9 +26,9 @@
     <button class="sidebar-toggle" (click)="sidebarOpen = !sidebarOpen">
       ☰
     </button>
-  </div>
+  </head>
   <div class="sidebar-content">
-    <nav class="sidebar" [class.open]="sidebarOpen">
+    <nav class="left-sidebar" [class.open]="sidebarOpen">
       <ul>
         <li *ngFor="let type of typeTabs; let i = index">
           <div class="type-title" (click)="toggleType(i)">
@@ -41,7 +41,7 @@
           <ul *ngIf="expandedTypeIndex === i">
             <li
               *ngFor="let item of getItems(type); let j = index"
-              [class.active]="item === selectedCollectionTab"
+              [class.active]="item === selectedItemType"
               (click)="selectTab(type, item)"
             >
               {{ item }}
@@ -50,20 +50,13 @@
         </li>
       </ul>
     </nav>
-    <div class="content">
-      <div *ngIf="selectedType === 'Array'">
-        <div style="margin-bottom: 8px; color: #666">
-          {{ arrayTabs[selectedArrayTab].desc }}
-        </div>
-        <div class="tab-content">
-          <array-1 [itemType]="selectedCollectionTab"></array-1>
-        </div>
-      </div>
-
-      <div class="tab-content" *ngIf="selectedType === 'Collection'">
-        <collection-1 [itemType]="selectedCollectionTab"></collection-1>
-      </div>
+    <div class="right-content">
+      @if(selectedType === 'Array') {
+      <array-1 [itemType]="selectedItemType"></array-1>
+      }@else if(selectedType === 'Collection') {
+      <collection-1 [itemType]="selectedItemType"></collection-1>
+      }
     </div>
   </div>
-</main>
+</div>
 <router-outlet />
